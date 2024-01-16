@@ -2,21 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package com.martin.portoflio.repository;
+package com.martin.portoflio.service;
 
 import com.martin.portoflio.entity.Project;
 import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import java.util.Optional;
 
 /**
  *
  * @author marti
  */
-
-@Repository
-public interface ProjectRepository extends JpaRepository<Project, Integer> {
+public interface ProjectService {
     
-    List<Project> findByUserId(Integer userId);
+    List<Project> listProjectsByUser(Integer userId);
+    
+    Project createProject(Project project);
+    
+    Project editProject(Project project);
+    
+    void deleteProject(Integer projectId);
     
 }

@@ -2,21 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package com.martin.portoflio.repository;
+package com.martin.portoflio.service;
 
 import com.martin.portoflio.entity.Network;
 import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import java.util.Optional;
 
 /**
  *
  * @author marti
  */
-
-@Repository
-public interface NetworkRepository extends JpaRepository<Network, Integer> {
+public interface NetworkService {
     
-    List<Network> findByUserId(Integer userId);
+    List<Network> listNetworksByUser(Integer userId);
+    
+    Network createNetwork(Network network);
+    
+    Network editNetwork(Network network);
+    
+    void deleteNetwork(Integer networkId);
     
 }
