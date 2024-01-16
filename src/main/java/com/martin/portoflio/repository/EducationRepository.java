@@ -4,10 +4,16 @@
  */
 package com.martin.portoflio.repository;
 
+import com.martin.portoflio.entity.Education;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author marti
  */
-public interface EducationRepository {
+
+@Repository
+public interface EducationRepository extends JpaRepository<Education, Integer> {
     
 }

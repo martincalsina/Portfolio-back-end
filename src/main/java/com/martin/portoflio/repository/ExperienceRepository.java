@@ -4,10 +4,16 @@
  */
 package com.martin.portoflio.repository;
 
+import com.martin.portoflio.entity.Experience;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author marti
  */
-public interface ExperienceRepository {
+
+@Repository
+public interface ExperienceRepository extends JpaRepository<Experience, Integer> {
     
 }
