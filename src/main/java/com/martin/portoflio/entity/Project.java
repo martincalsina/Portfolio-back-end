@@ -5,6 +5,8 @@
 package com.martin.portoflio.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.martin.portoflio.dto.project.CreateProjectData;
+import com.martin.portoflio.dto.project.EditProjectData;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -43,5 +45,21 @@ public class Project {
     @ManyToOne
     @JsonBackReference
     private User user;
+    
+    public Project(CreateProjectData cpd) {
+        this.name = cpd.name();
+        this.description = cpd.description();
+        this.picture = cpd.picture();
+        this.url = cpd.url();
+    }
+    
+    public Project(EditProjectData epd) {
+        this.id = epd.projectId();
+        this.name = epd.name();
+        this.description = epd.description();
+        this.picture = epd.picture();
+        this.url = epd.url();
+    }
+    
     
 }

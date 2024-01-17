@@ -14,9 +14,11 @@ import java.util.Optional;
  */
 public interface ProjectService {
     
+    Project getProjectById(Integer projectId);
+    
     List<Project> listProjectsByUser(Integer userId);
     
-    Project createProject(Project project);
+    Project createProject(Project project, Integer userId);
     
     Project editProject(Project project);
     
