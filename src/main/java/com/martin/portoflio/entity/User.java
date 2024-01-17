@@ -5,6 +5,8 @@
 package com.martin.portoflio.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.martin.portoflio.dto.user.CreateUserData;
+import com.martin.portoflio.dto.user.DataEditUser;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,8 +16,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -24,6 +29,8 @@ import lombok.Data;
 
 @Data
 @Table(name="user")
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class User {
     
@@ -62,6 +69,35 @@ public class User {
     @OneToMany(mappedBy="user", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)
     @JsonManagedReference
     private List<Project> projects;
+    
+    public User(CreateUserData cud) {
+        
+        this.email=cud.email();
+        this.password=cud.password();
+        this.name=cud.name();
+        this.headline=cud.headline();
+        this.description=cud.description();
+        this.picture=cud.picture();
+        
+        this.networks=new ArrayList<>();
+        this.skills=new ArrayList<>();
+        this.educations=new ArrayList<>();
+        this.experiences=new ArrayList<>();
+        this.projects=new ArrayList<>();
+        
+    }
+    
+    public User(DataEditUser eud) {
+        
+        this.id=eud.userId();
+        this.email=eud.email();
+        this.password=eud.password();
+        this.name=eud.name();
+        this.headline=eud.headline();
+        this.description=eud.description();
+        this.picture=eud.picture();
+        
+    }
     
     
 }

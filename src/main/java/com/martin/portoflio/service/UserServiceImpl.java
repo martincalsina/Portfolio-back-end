@@ -28,12 +28,22 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(User user) {
+        if (this.existsByEmail(user.getEmail())) {
+            throw new RuntimeException("There is already a user with the given email");
+        }
         return this.userRepository.save(user);
     }
 
     @Override
     public User editUser(User user) {
-        return this.userRepository.save(user);
+        User existentUser = this.userRepository.findById(user.getId()).orElseThrow();
+        
+        existentUser.setName(user.getName());
+        existentUser.setHeadline(user.getHeadline());
+        existentUser.setDescription(user.getDescription());
+        existentUser.setPicture(user.getPicture());
+        
+        return this.userRepository.save(existentUser);
     }
 
     @Override
@@ -43,7 +53,15 @@ public class UserServiceImpl implements UserService {
     
     @Override
     public Optional<User> login(String email, String password) {
-        return this.userRepository.findByEmailAndPassword(email, password);
+        
+        Optional<User> userOptional = this.userRepository.findByEmailAndPassword(email, password);
+        
+        if (userOptional.isEmpty()) {
+            throw new RuntimeException("There is no user with the given credentials");
+        }
+        
+        return userOptional;
+        
     }
     
 }

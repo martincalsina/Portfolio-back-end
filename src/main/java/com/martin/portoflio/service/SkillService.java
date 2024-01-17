@@ -16,9 +16,9 @@ public interface SkillService {
     
     List<Skill> listSkillsByUser(Integer userId);
     
-    Skill createSkill(Skill skill);
+    Skill createSkill(Skill skill, Integer userId);
     
-    Skill editSkill(Skill skill);
+    Skill editSkill(Skill skill, Integer userId);
     
     void deleteSkill(Integer skillId);
     

@@ -5,6 +5,8 @@
 package com.martin.portoflio.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.martin.portoflio.dto.skill.CreateSkillData;
+import com.martin.portoflio.dto.skill.EditSkillData;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +14,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -21,6 +25,8 @@ import lombok.Data;
 
 @Data
 @Table(name="skill")
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Skill {
     
@@ -39,6 +45,21 @@ public class Skill {
     @ManyToOne
     @JsonBackReference
     private User user;
+    
+    public Skill(CreateSkillData csd) {
+        this.name = csd.name();
+        this.description = csd.description();
+        this.icon = csd.icon();
+        this.isSoft = csd.isSoft();
+    }
+    
+    public Skill(EditSkillData esd) {
+        this.id = esd.id();
+        this.name = esd.name();
+        this.description = esd.description();
+        this.icon = esd.icon();
+        this.isSoft = esd.isSoft();
+    }
     
     
 }

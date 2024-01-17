@@ -23,7 +23,4 @@ public interface UserService {
     
     Optional<User> login(String email, String password);
     
-    
-    
-    
 }

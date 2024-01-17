@@ -13,7 +13,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -22,6 +24,8 @@ import lombok.Data;
 
 @Data
 @Table(name="experience")
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Experience {
     
