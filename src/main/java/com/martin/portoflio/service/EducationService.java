@@ -13,10 +13,12 @@ import java.util.Optional;
  * @author marti
  */
 public interface EducationService {
+
+    Education getEducationById(Integer eduactionId);
     
     List<Education> listEducationsByUser(Integer userId);
     
-    Education createEducation(Education education);
+    Education createEducation(Education education, Integer userId);
     
     Education editEducation(Education education);
     
