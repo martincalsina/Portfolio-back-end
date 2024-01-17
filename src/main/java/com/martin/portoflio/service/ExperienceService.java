@@ -14,9 +14,11 @@ import java.util.Optional;
  */
 public interface ExperienceService {
     
+    Experience getExperienceById(Integer experienceId);
+    
     List<Experience> listExperiencesByUser(Integer userId);
     
-    Experience createExperience(Experience experience);
+    Experience createExperience(Experience experience, Integer userId);
     
     Experience editExperience(Experience experience);
     
