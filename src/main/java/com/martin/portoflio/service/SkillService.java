@@ -14,11 +14,13 @@ import java.util.Optional;
  */
 public interface SkillService {
     
+    Skill getSkillById(Integer skillId);
+    
     List<Skill> listSkillsByUser(Integer userId);
     
     Skill createSkill(Skill skill, Integer userId);
     
-    Skill editSkill(Skill skill, Integer userId);
+    Skill editSkill(Skill skill);
     
     void deleteSkill(Integer skillId);
     

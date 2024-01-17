@@ -26,6 +26,11 @@ public class SkillServiceImpl implements SkillService {
     
     @Autowired
     private UserRepository userRepository;
+    
+    @Override
+    public Skill getSkillById(Integer skillId) {
+        return this.skillRepository.findById(skillId).orElseThrow();
+    }
 
     @Override
     public List<Skill> listSkillsByUser(Integer userId) {
@@ -40,10 +45,14 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public Skill editSkill(Skill skill, Integer userId) {
-        User existentUser = userRepository.findById(userId).orElseThrow();
-        skill.setUser(existentUser);
-        return this.skillRepository.save(skill);
+    public Skill editSkill(Skill skill) {
+        Skill existentSkill = this.skillRepository.findById(skill.getId()).orElseThrow();
+        
+        existentSkill.setName(skill.getName());
+        existentSkill.setDescription(skill.getDescription());
+        existentSkill.setIcon(skill.getIcon());
+        
+        return this.skillRepository.save(existentSkill);
     }
 
     @Override

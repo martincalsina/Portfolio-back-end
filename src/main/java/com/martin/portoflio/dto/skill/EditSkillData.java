@@ -13,11 +13,10 @@ import jakarta.validation.constraints.Size;
  * @author marti
  */
 public record EditSkillData(
-    @NotNull Integer id,
+    @NotNull Integer skillId,
     @NotBlank @Size(max=100) String name,
     @Size(max=500) String description,
     @Size(max=100) String icon,
-    @NotNull Boolean isSoft,
-    @NotNull Integer userId) {
+    @NotNull Boolean isSoft) {
 
 }

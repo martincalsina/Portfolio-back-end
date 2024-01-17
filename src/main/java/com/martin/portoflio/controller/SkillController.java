@@ -32,6 +32,11 @@ public class SkillController {
     @Autowired
     private SkillService skillService;
     
+    @GetMapping("/get/{skillId}")
+    public Skill getById(@PathVariable Integer skillId) {
+        return this.skillService.getSkillById(skillId);
+    }
+    
     @GetMapping("/list/{userId}")
     public List<Skill> listSkillsByUser(@PathVariable Integer userId) {
         return this.skillService.listSkillsByUser(userId);
@@ -46,7 +51,7 @@ public class SkillController {
     @PutMapping("/edit")
     public Skill editSkill(@RequestBody @Valid EditSkillData editSkillData) {
         Skill skill = new Skill(editSkillData);
-        return this.skillService.editSkill(skill, editSkillData.userId());
+        return this.skillService.editSkill(skill);
     }
     
     @DeleteMapping("/delete/{skillId}")

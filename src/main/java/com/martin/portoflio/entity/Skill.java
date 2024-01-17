@@ -54,7 +54,7 @@ public class Skill {
     }
     
     public Skill(EditSkillData esd) {
-        this.id = esd.id();
+        this.id = esd.skillId();
         this.name = esd.name();
         this.description = esd.description();
         this.icon = esd.icon();
