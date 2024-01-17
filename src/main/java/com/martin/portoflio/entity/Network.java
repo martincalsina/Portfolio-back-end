@@ -5,6 +5,8 @@
 package com.martin.portoflio.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.martin.portoflio.dto.network.CreateNetworkData;
+import com.martin.portoflio.dto.network.EditNetworkData;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -41,5 +43,22 @@ public class Network {
     @ManyToOne
     @JsonBackReference
     private User user;
+    
+    public Network(CreateNetworkData cnd) {
+        
+        this.name = cnd.name();
+        this.icon = cnd.icon();
+        this.url = cnd.url();
+        
+    }
+    
+    public Network(EditNetworkData end) {
+        
+        this.id = end.networkId();
+        this.name = end.name();
+        this.icon = end.icon();
+        this.url = end.url();
+        
+    }
     
 }

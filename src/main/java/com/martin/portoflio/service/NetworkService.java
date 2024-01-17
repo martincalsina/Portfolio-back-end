@@ -14,9 +14,11 @@ import java.util.Optional;
  */
 public interface NetworkService {
     
+    Network getNetworkById(Integer networkId);
+    
     List<Network> listNetworksByUser(Integer userId);
     
-    Network createNetwork(Network network);
+    Network createNetwork(Network network, Integer userId);
     
     Network editNetwork(Network network);
     
