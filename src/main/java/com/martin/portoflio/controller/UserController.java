@@ -34,7 +34,7 @@ public class UserController {
     
     @GetMapping("/get/{id}")
     public User getUserById(@PathVariable Integer id) {
-        return this.userService.getUserById(id).orElse(null);
+        return this.userService.getUserById(id).orElseThrow();
     }
     
     @GetMapping("/exists/{email}")
